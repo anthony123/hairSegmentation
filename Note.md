@@ -1,0 +1,17 @@
+####1. A Compositional Examplar-Based Model for Hair Segmentation
+######1.1 abstract
+In  this paper, we propose a novel Compostional Exemplar-base Model(CEM) for hair style segmentation. CEM generates an adaptive hair style(a probabilistic mask) for the input image automatically in the manner of Divide-and-Conquer, which can ve divided into decomposition stage and composition stage naturally. For the decomposition stage, we learn a strong ranker based on a group of weak similarity functions emphasizing the Semantic Layout similarity(SLS) effectively; in the composition stage, we introduce Neighbor Label Consistency(NLC) Constraint to reduce the ambiguity between data representation and semantic meaning and then recompose the hair style using alpha-expansion algorithm. Final segmentation result is obtained by Dual-Level Conditional Random Fields.
+- - - - 
+######1.2 insights
+######1.2.1  Yacoob and Davis build a hair color model and then adopt a region growing algorithm to modify the hair region. However, this method will only work when the hair color doesn't change significantly, especially for the dark hair. 
+
+######1.2.2 Lee give a more pratical algorithm for consumer images. They first cluster hair and the color of hair and face into several typical patterns manually. And then for each hair style, choose the fittest hair and face color model and modify it according to the input image.A Markov Random Field is built and inferred to maximize the joint probability distribution of each pixel on each label. The one whose labeling result has the minimized distance to its corresponding hair style is chosen as the final hair style. However, hair classification is a hard issue. Unfortunately, this classification is vital because unary term plays dominant role in graph model.
+
+######1.2.3 In Borenstein and Ullman, a combined top-down an bottom-up algorithm is proposed to solve the problem of figure-ground segmentation. During top-down procedure, image fragments and the corresponding figure background labels are extracted from training data first and then used to optimally cover an object in a novel image to induce the final segmentation result. 
+
+######1.2.4 A similarity work to capture the Semantic Layout information is that of Shotton, which presents a discriminative model to fuse shape, appearance and context information to recogize efficiently the object classes.
+- - - - 
+######1.3 CEM: In the decomposition stage, we design a group of Semantic Layoyt Similarity(SLS)features, which are combined together to get a strong and effeective sililarity function for each location respectively. Based on the similarity function, candidate segmentation results are collected for each local patch from a manually labeled library in this stage. In the composition stage, we introduce a Neighbor Label Consistency(NLC) Constraint and organize local patches as a Markov Network. A well-defined consistency function promises the regularity, which allows us to optimize the CEM using  a-expansion algorithm. CEM finally generate a probabilistic mask. With the favor of the mask, we obtain the final segmentation reuslt using a dual-level Conditional Random Fields.
+
+- - - -
+1.4  SLS: 
