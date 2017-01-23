@@ -14,4 +14,23 @@ In  this paper, we propose a novel Compostional Exemplar-base Model(CEM) for hai
 ######1.3 CEM: In the decomposition stage, we design a group of Semantic Layoyt Similarity(SLS)features, which are combined together to get a strong and effeective sililarity function for each location respectively. Based on the similarity function, candidate segmentation results are collected for each local patch from a manually labeled library in this stage. In the composition stage, we introduce a Neighbor Label Consistency(NLC) Constraint and organize local patches as a Markov Network. A well-defined consistency function promises the regularity, which allows us to optimize the CEM using  a-expansion algorithm. CEM finally generate a probabilistic mask. With the favor of the mask, we obtain the final segmentation reuslt using a dual-level Conditional Random Fields.
 
 - - - -
-1.4  SLS: 
+1.4  SLS: Each SLS feature is determined by a triple(Fm, Rm, Bm). Fm denotes the feature type, which can be histogram of R channel in the RGB color space or LGBP in some specific frequency and orientation. Rm is the rectangle where Fm histogram is calculated. Bm is the bin index of the histogram. 
+
+
+####2. A Density Based Method for Automatic Hairstyle Discovery and Recognition
+
+####3. Markov Random Field Models for Hair and face Segmentation
+**1.Abstract**  This paper presents an algorithm for measuring hair and face appearance in 2D images. Our approach starts by using learned mixture models of color and location information to suggest the hypotheses of the face, hair, and background regions. In turn, the image gradient information is usedto generate the likely suggestions in the neighboring image regions. Either Graph-cut or Loopy Belief Propagation algorithm is then applied to optimize the resulting Markov network in order to obtain the most likely hair and face segmentation from the background.   
+
+####4. Deep Automatic Portrait Matting
+
+####5. A Closed Form Solution to Natural Image Matting
+
+1. tripmap 的缺点： trmap-based approaches typically experience diffiulty handling image with a significant portion of mixed piuxels or hwen the foreground object have many holes. In such challenging cases a great deal of experience and user interaction may be necessary to construct a trimap that would yield a good matte. Another problem with the trimap interface is that the user cannot directly influence the matte in the most important part of the image: the mixed pixels.
+
+2. overview method of this paper: In this paper we present a new closed-form solution for extracting the alpha matte from a natural image. We derive a cost function from local smoothness assumptions on foreground and background colors F and B, and showing that in the resulting expression it is possible to analytically eliminate F and B, yielding a quadratic cost function in α. The alpha matte produced by our method is the global optimum of this cost function, which may be obtained by solving a sparse linear system. Since our approach computes α directly and without requiring reliable estimates for F and B, a surprisingly small amount of user input is often sufficient for extracting a high quality matte. Furthermore, our closed-form formulatin enables one to understand and predict the properties of the solution by examining the eighenvectors of a sparse matrix, closely related to matrices used in spectral image segmentation algorithms. In addition to providing a solid theoretical basis for our approach, such analysis can provide useful hints to the user regarding where in the image scribbles should be placed.
+3. the Bayesian matting: F and B are assumed to be smooth and the prediction is based on a weighted average of knpwn foreground and background pixels.A moxture of oriented Gaussians is used to learn the local distribution and then α , F and B are estimated as the most probable ones given that distribution. Such methods work well when the color distributions of the foreground and the background do not overlap, and the unknpwn regin in the trimap is small. 
+4. The Poisson matting: also expects a trimap as part of its input, and computes the alpha matte in the mixed region by solbing a Posson equation with the matte gradient field and Dirichlet boundary conditions. In the global Poisson matting method the matte gradient field is approximated as ∇I/(F-B) by taking the gradient of the compositing equation, and neglecting the gradient in F and B. The matte is then found by solving for a function whose gradients are as close as possible to the approximated matte gradient field. Whenever F or B are not sufficiently smooth inside the unknown region, the resulting matte might not be correct, and additional local manipulations may need to be applied interectively to the matte gradient field in order to obtain a satisfactory soultion. This interactive refinement process is referred to as local Possion matting.
+
+
+
